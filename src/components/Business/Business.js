@@ -1,5 +1,4 @@
 import React from 'react';
-import './Business.css';
 import { Box, Card, CardBody, Image, Text, Heading, Flex } from '@chakra-ui/react';
 import FoodImage from "../../images/anh-nguyen-kcA-c3f_3FE-unsplash.jpg";
 
