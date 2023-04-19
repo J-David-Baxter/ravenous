@@ -2,13 +2,11 @@ import React from 'react';
 import Business from '../Business/Business';
 import { Flex } from '@chakra-ui/react';
 
-const BusinessList = () => {
-  const businesses = Array(10).fill(0);
-  
+const BusinessList = ({ businessList }) => {
   return (
     <Flex wrap='wrap'>
-        {businesses.map((business, i) => (
-            <Business key={i}/>
+        {businessList.map((business, i) => (
+            <Business key={i} business={business}/>
         ))}
     </Flex>
   )

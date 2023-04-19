@@ -1,19 +1,8 @@
 import React from 'react';
 import { Box, Card, CardBody, Image, Text, Heading, Flex } from '@chakra-ui/react';
-import FoodImage from "../../images/anh-nguyen-kcA-c3f_3FE-unsplash.jpg";
 
-const Business = () => {
-  const business =  {
-    image: FoodImage,
-    name: "Dave's Spot",
-    address: "123 Main Street",
-    city: "Waterford",
-    state: "CT",
-    zipcode: "06385",
-    category: "American",
-    rating: 5,
-    reviewCount: 100,
-  }
+const Business = ({ business }) => {
+  
   
   return (
     <Box maxW='sm' m={10}>
