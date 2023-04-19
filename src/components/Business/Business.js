@@ -15,7 +15,15 @@ const Business = ({ business }) => {
                     w={200}
                     h={200}
                 />
-                <Heading size='md' mt={5}>{business.name}</Heading>
+                <Heading 
+                    size='md' 
+                    cursor='pointer' 
+                    mt={5} 
+                    onMouseOver={(e) => e.target.style.textDecoration='underline'} 
+                    onMouseLeave={(e) => e.target.style.textDecoration='none'}
+                >
+                {business.name}
+                </Heading>
                 <Flex mt={5}>
                     <Flex direction='column' mr={5}>
                         <Text>{business.address}</Text>
