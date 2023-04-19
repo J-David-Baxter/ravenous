@@ -1,13 +1,12 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import BusinessList from './components/BusinessList/BusinessList';
 import Searchbar from './components/Searchbar/Searchbar';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <Box>
-      <Box align='center' bg='goldenrod' h={12}>
-        <Heading color='white'>ravenous</Heading>
-      </Box>
+      <Header />
       <Searchbar />
       <BusinessList />
     </Box>
