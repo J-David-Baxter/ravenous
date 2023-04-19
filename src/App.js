@@ -1,5 +1,4 @@
 import { Box, Heading } from '@chakra-ui/react';
-import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import Searchbar from './components/Searchbar/Searchbar';
 
