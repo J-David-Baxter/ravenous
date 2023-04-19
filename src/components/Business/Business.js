@@ -31,8 +31,8 @@ const Business = ({ business }) => {
                         <Text>{business.state}</Text>
                     </Flex>
                     <Flex direction='column'>
-                        <Text color='goldenrod'>{business.category.toUpperCase()}</Text>
-                        <Text color='goldenrod'>{business.rating} Stars</Text>
+                        <Text color='yellow.600'>{business.category.toUpperCase()}</Text>
+                        <Text color='yellow.600'>{business.rating} Stars</Text>
                         <Text>{business.reviewCount} Reviews</Text>
                     </Flex>
                 </Flex>
