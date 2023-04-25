@@ -3,39 +3,63 @@ import React, { useState } from 'react';
 import BackgroundImage from '../../images/chad-montano-MqT0asuoIcU-unsplash.jpg';
 
 const Searchbar = () => {
-  const [buttonState, setButtonState] = useState([
+  const BUTTON_VALUES  = [
     {
       text: 'Best Match',
-      isActive: false,
+      value: 'best_match'
     },
     {
       text: 'Highest Rated',
-      isActive: false,
+      value: 'highest_rated'
     },
     {
       text: 'Most Reviewed',
-      isActive: false,
+      value: 'most_reviewed'
     }
-  ])
+  ];
   
-  function toggleButtonState(index) {
-    setButtonState(buttonState.map((button, i) => {
-      return i === index ? {...button, isActive: !button.isActive} : {...button, isActive: false}
-    }))
+  const [searchTerm, setSearchTerm] = useState('');
+  const [location, setLocation] = useState('');
+  const [selectedSorting, setSelectedSorting] = useState('best_match');
+
+  function toggleSortingOption(event) {
+    setSelectedSorting(event.target.value);
   }
-  
+
+  function handleSearchTermChange(event) {
+    setSearchTerm(event.target.value);
+  }
+
+
+  function handleLocationChange(event) {
+    setLocation(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(`Searching Yelp with ${searchTerm}, ${location}, ${selectedSorting}`);
+    setSearchTerm('');
+    setLocation('');
+  } 
+
   return (
     <Stack align='center' gap={10} backgroundImage={BackgroundImage} backgroundPosition='center'>
-        <ButtonGroup colorScheme='teal' w={400} mt={5}>
-            {buttonState.map((button, i) => (
-              <Button key={i} isActive={button.isActive} onClick={() => toggleButtonState(i)}>{button.text}</Button>
+        <ButtonGroup colorScheme='twitter' w={400} mt={5}>
+            {BUTTON_VALUES.map((button, i) => (
+              <Button 
+                key={button.value} 
+                value={button.value} 
+                onClick={toggleSortingOption} 
+                isActive={button.value === selectedSorting}>
+              {button.text}
+              </Button>
             ))}
         </ButtonGroup>
         <Flex w='lg' gap={10}>
-            <Input bg='white' placeholder='Search Businesses'/>
-            <Input bg='white' placeholder='Location'/>
+            <Input bg='white' placeholder='Search Businesses' value={searchTerm} onChange={handleSearchTermChange} />
+            <Input bg='white' placeholder='Location' value={location} onChange={handleLocationChange} />
         </Flex>
-        <Button colorScheme='teal'>Search</Button>
+        <Button colorScheme='twitter' onClick={handleSubmit}>Search</Button>
         <Divider />
     </Stack>
   )
