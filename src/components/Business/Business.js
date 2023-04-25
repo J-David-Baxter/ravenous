@@ -33,7 +33,7 @@ const Business = ({ business }) => {
                     <Flex direction='column'>
                         <Text color='yellow.600'>{business.category.toUpperCase()}</Text>
                         <Text color='yellow.600'>{business.rating} Stars</Text>
-                        <Text>{business.reviewCount} Reviews</Text>
+                        <Text color='yellow.600'>{business.reviewCount} Reviews</Text>
                     </Flex>
                 </Flex>
             </CardBody>
