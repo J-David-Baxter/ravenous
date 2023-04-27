@@ -6,19 +6,21 @@ const Business = ({ business }) => {
   
   return (
     <Box maxW='sm' m={10}>
-        <Card w={275} variant='elevated'>
-            <CardBody>
+        <Card w='sm' variant='elevated' justifyContent='center'>
+            <CardBody justifyContent='center'>
                 <Image 
-                    src={business.image}
+                    src={business.image_url}
                     alt='food'
                     borderRadius='lg'
-                    w={200}
-                    h={200}
+                    w='sm'
+                    h='sm'
+                    m='0 auto'
                 />
                 <Heading 
-                    size='md' 
+                    size='lg' 
                     cursor='pointer' 
-                    mt={5} 
+                    mt={5}
+                    textAlign='center'
                     onMouseOver={(e) => e.target.style.textDecoration='underline'} 
                     onMouseLeave={(e) => e.target.style.textDecoration='none'}
                 >
@@ -26,14 +28,14 @@ const Business = ({ business }) => {
                 </Heading>
                 <Flex mt={5}>
                     <Flex direction='column' mr={5}>
-                        <Text>{business.address}</Text>
-                        <Text>{business.city}</Text>
-                        <Text>{business.state}</Text>
+                        <Text>{business.location.address1}</Text>
+                        <Text>{business.location.city}</Text>
+                        <Text>{business.location.state}</Text>
                     </Flex>
                     <Flex direction='column'>
-                        <Text color='yellow.600'>{business.category.toUpperCase()}</Text>
+                        <Text color='yellow.600'>{business.categories[0].title.toUpperCase()}</Text>
                         <Text color='yellow.600'>{business.rating} Stars</Text>
-                        <Text color='yellow.600'>{business.reviewCount} Reviews</Text>
+                        <Text color='yellow.600'>{business.review_count} Reviews</Text>
                     </Flex>
                 </Flex>
             </CardBody>

@@ -1,8 +1,9 @@
 import { Button, ButtonGroup, Divider, Flex, Input, Stack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import BackgroundImage from '../../images/chad-montano-MqT0asuoIcU-unsplash.jpg';
+import getSearchResults from '../../utils/Yelp';
 
-const Searchbar = () => {
+const Searchbar = ({ setBusinesses }) => {
   const BUTTON_VALUES  = [
     {
       text: 'Best Match',
@@ -10,11 +11,11 @@ const Searchbar = () => {
     },
     {
       text: 'Highest Rated',
-      value: 'highest_rated'
+      value: 'rating'
     },
     {
       text: 'Most Reviewed',
-      value: 'most_reviewed'
+      value: 'review_count'
     }
   ];
   
@@ -35,11 +36,10 @@ const Searchbar = () => {
     setLocation(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSearch(event) {
     event.preventDefault();
-    console.log(`Searching Yelp with ${searchTerm}, ${location}, ${selectedSorting}`);
-    setSearchTerm('');
-    setLocation('');
+    const businesses = await getSearchResults(searchTerm, location, selectedSorting);
+    setBusinesses(businesses);
   } 
 
   return (
@@ -59,7 +59,7 @@ const Searchbar = () => {
             <Input bg='white' placeholder='Search Businesses' value={searchTerm} onChange={handleSearchTermChange} />
             <Input bg='white' placeholder='Location' value={location} onChange={handleLocationChange} />
         </Flex>
-        <Button colorScheme='twitter' onClick={handleSubmit}>Search</Button>
+        <Button colorScheme='twitter' onClick={handleSearch}>Search</Button>
         <Divider />
     </Stack>
   )
